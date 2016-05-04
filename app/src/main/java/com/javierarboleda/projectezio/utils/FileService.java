@@ -1,4 +1,4 @@
-package com.javierarboleda.projectezio.comic;
+package com.javierarboleda.projectezio.utils;
 
 import java.io.File;
 
