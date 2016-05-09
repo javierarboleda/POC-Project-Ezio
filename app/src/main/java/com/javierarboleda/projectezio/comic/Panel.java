@@ -11,12 +11,17 @@ public class Panel {
     private PointF mTopRight;
     private PointF mBottomLeft;
     private PointF mBottomRight;
+    private float mScale;
 
-    public Panel(PointF topLeft, PointF topRight, PointF bottomLeft, PointF bottomRight) {
+    public Panel(PointF topLeft, PointF topRight, PointF bottomLeft, PointF bottomRight,
+                 float scale) {
+
         this.mTopLeft = topLeft;
         this.mTopRight = topRight;
         this.mBottomLeft = bottomLeft;
         this.mBottomRight = bottomRight;
+        this.mScale = scale;
+
     }
 
     public PointF getTopLeft() {
@@ -49,6 +54,21 @@ public class Panel {
 
     public void setBottomRight(PointF mBottomRight) {
         this.mBottomRight = mBottomRight;
+    }
+
+    public PointF getMidpoint() {
+        float x = (mTopLeft.x + mBottomRight.x) / 2;
+        float y = (mTopLeft.y + mBottomRight.y) / 2;
+
+        return new PointF(x, y);
+    }
+
+    public float getScale() {
+        return mScale;
+    }
+
+    public void setScale(float mScale) {
+        this.mScale = mScale;
     }
 
 }

@@ -5,7 +5,6 @@ import android.animation.ValueAnimator;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -21,6 +20,8 @@ import com.javierarboleda.projectezio.comic.Panel;
 import com.javierarboleda.projectezio.utils.AnimationUtil;
 import com.javierarboleda.projectezio.utils.FileService;
 
+import java.util.ArrayList;
+
 public class ComicActivity extends AppCompatActivity {
 
     private SubsamplingScaleImageView mImageView;
@@ -30,9 +31,11 @@ public class ComicActivity extends AppCompatActivity {
     private View mLeftPanel;
     private View mRightPanel;
     private Menu mMenu;
-    private boolean mTopBottomSelected;
     private int mUnitSize;
     private String mActivePanels;
+    private ArrayList<Panel> mSavedPanels;
+    private float mOriginalScale;
+    private int mPanelPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,13 @@ public class ComicActivity extends AppCompatActivity {
                 savePanel();
                 break;
             case R.id.play_action_bar_button:
+                if (!mSavedPanels.isEmpty()) {
+                    animateToPanel(mSavedPanels.get(mPanelPosition));
+                    mPanelPosition++;
+                    if (mPanelPosition == mSavedPanels.size()) {
+                        mPanelPosition = 0;
+                    }
+                }
                 break;
         }
         
@@ -84,17 +94,17 @@ public class ComicActivity extends AppCompatActivity {
         mBottomPanel = findViewById(R.id.bottomPanel);
         mLeftPanel = findViewById(R.id.leftPanel);
         mRightPanel = findViewById(R.id.rightPanel);
-
-        mTopBottomSelected = false;
         mUnitSize = 50;
         mActivePanels = "B/T";
+        mSavedPanels = new ArrayList<>();
+        mPanelPosition = 0;
 
         testLoadImage();
     }
 
     private void savePanel() {
 
-        float x, y;
+        float x, y, scale;
 
         x = 0;
         y = mTopPanel.getHeight();
@@ -110,6 +120,8 @@ public class ComicActivity extends AppCompatActivity {
         x = mImageView.getWidth();
         PointF bottomRightSourcePointF = mImageView.viewToSourceCoord(x, y);
 
+        scale = mImageView.getScale() / mOriginalScale;
+
         String debugText = "TL: " + topLeftSourcePointF.x + ", " + topLeftSourcePointF.y +
                 " TR: " + topRightSourcePointF.x + ", " + topRightSourcePointF.y +
                 " BL: " + bottomLeftSourcePointF.x + ", " + bottomLeftSourcePointF.y +
@@ -118,10 +130,32 @@ public class ComicActivity extends AppCompatActivity {
         mCoordTextView.setText(debugText);
 
         Panel panel = new Panel(topLeftSourcePointF, topRightSourcePointF,
-                bottomLeftSourcePointF, bottomRightSourcePointF);
+                bottomLeftSourcePointF, bottomRightSourcePointF, scale);
+
+        mSavedPanels.add(panel);
 
     }
 
+    private void animateToPanel(Panel panel) {
+
+        PointF midPoint = panel.getMidpoint();
+        float scale = panel.getScale() * mOriginalScale;
+
+        mImageView.animateScaleAndCenter(scale, midPoint)
+                .withDuration(1000)
+                .withEasing(SubsamplingScaleImageView.EASE_OUT_QUAD)
+                .withInterruptible(false)
+                .start();
+
+    }
+
+    private PointF getMidpoint(PointF a, PointF b) {
+
+        float x = (a.x + b.x) / 2;
+        float y = (a.y + b.y) / 2;
+
+        return new PointF(x, y);
+    }
 
     private void updatePanelSize(int posOrNeg) {
         switch (mActivePanels) {
@@ -182,6 +216,33 @@ public class ComicActivity extends AppCompatActivity {
 
         mImageView.setPanLimit(SubsamplingScaleImageView.PAN_LIMIT_OUTSIDE);
 
+        mImageView.setOnImageEventListener(new SubsamplingScaleImageView.OnImageEventListener() {
+            @Override
+            public void onReady() {
+
+            }
+
+            @Override
+            public void onImageLoaded() {
+                mOriginalScale = mImageView.getScale();
+            }
+
+            @Override
+            public void onPreviewLoadError(Exception e) {
+
+            }
+
+            @Override
+            public void onImageLoadError(Exception e) {
+
+            }
+
+            @Override
+            public void onTileLoadError(Exception e) {
+
+            }
+        });
+
         final GestureDetector gestureDetector = new GestureDetector(this,
                 new GestureDetector.SimpleOnGestureListener() {
 
@@ -237,18 +298,6 @@ public class ComicActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void touchEvent(View view) {
-        long downTime = SystemClock.uptimeMillis();
-        long eventTime = SystemClock.uptimeMillis() + 100;
-        float x = 0.0f;
-        float y = 0.0f;
-        int metaState = 0;
-        MotionEvent motionEvent = MotionEvent.obtain(
-                downTime, eventTime, MotionEvent.ACTION_UP, x, y, metaState
-        );
-        view.dispatchTouchEvent(motionEvent);
     }
 
     private void animateBorderPanels() {

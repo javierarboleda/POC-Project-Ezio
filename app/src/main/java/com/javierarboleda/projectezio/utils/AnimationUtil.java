@@ -5,7 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by javierarboleda on 5/4/16.
+ * Created by Javier Arboleda on 5/4/16.
+ *
  */
 public class AnimationUtil {
 
