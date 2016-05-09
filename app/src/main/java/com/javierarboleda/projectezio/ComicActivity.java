@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+import com.javierarboleda.projectezio.comic.Panel;
 import com.javierarboleda.projectezio.utils.AnimationUtil;
 import com.javierarboleda.projectezio.utils.FileService;
 
@@ -65,6 +66,11 @@ public class ComicActivity extends AppCompatActivity {
             case R.id.minus_action_bar_button:
                 updatePanelSize(-1);
                 break;
+            case R.id.add_panel_action_bar_button:
+                savePanel();
+                break;
+            case R.id.play_action_bar_button:
+                break;
         }
         
         return super.onOptionsItemSelected(item);
@@ -80,10 +86,40 @@ public class ComicActivity extends AppCompatActivity {
         mRightPanel = findViewById(R.id.rightPanel);
 
         mTopBottomSelected = false;
-        mUnitSize = 10;
+        mUnitSize = 50;
         mActivePanels = "B/T";
 
         testLoadImage();
+    }
+
+    private void savePanel() {
+
+        float x, y;
+
+        x = 0;
+        y = mTopPanel.getHeight();
+        PointF topLeftSourcePointF = mImageView.viewToSourceCoord(x, y);
+
+        x = mImageView.getWidth();
+        PointF topRightSourcePointF = mImageView.viewToSourceCoord(x, y);
+
+        x = 0;
+        y = mImageView.getHeight() - mBottomPanel.getHeight();
+        PointF bottomLeftSourcePointF = mImageView.viewToSourceCoord(x, y);
+
+        x = mImageView.getWidth();
+        PointF bottomRightSourcePointF = mImageView.viewToSourceCoord(x, y);
+
+        String debugText = "TL: " + topLeftSourcePointF.x + ", " + topLeftSourcePointF.y +
+                " TR: " + topRightSourcePointF.x + ", " + topRightSourcePointF.y +
+                " BL: " + bottomLeftSourcePointF.x + ", " + bottomLeftSourcePointF.y +
+                " BR: " + bottomRightSourcePointF.x + ", " + bottomRightSourcePointF.y;
+
+        mCoordTextView.setText(debugText);
+
+        Panel panel = new Panel(topLeftSourcePointF, topRightSourcePointF,
+                bottomLeftSourcePointF, bottomRightSourcePointF);
+
     }
 
 
@@ -106,14 +142,18 @@ public class ComicActivity extends AppCompatActivity {
 
     private void toggleUnitSize() {
         switch (mUnitSize) {
-            case 1:
-                mUnitSize = 5;
-                break;
-            case 5:
+            case 50:
                 mUnitSize = 10;
                 break;
-            default:
+            case 10:
+                mUnitSize = 5;
+                break;
+
+            case 5:
                 mUnitSize = 1;
+                break;
+            default:
+                mUnitSize = 50;
                 break;
         }
         mMenu.findItem(R.id.unitaction_bar_button).setTitle(String.valueOf(mUnitSize));

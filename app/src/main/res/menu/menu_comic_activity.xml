@@ -8,7 +8,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <item
     android:id="@+id/unitaction_bar_button"
-    android:title="10"
+    android:title="50"
     app:showAsAction="always" />
 
 <item
