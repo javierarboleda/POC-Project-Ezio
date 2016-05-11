@@ -80,10 +80,46 @@ public class ComicActivity extends AppCompatActivity {
                         mPanelPosition = 0;
                     }
                 }
+                else {
+                    playTestPanels();
+                }
                 break;
         }
         
         return super.onOptionsItemSelected(item);
+    }
+
+    private void playTestPanels() {
+
+        Panel panel1 = new Panel(new PointF(-171.42374f, 0.0f), new PointF(2159.4238f, 0.0f),
+                new PointF(-171.42374f, 3056.0f), new PointF(2159.4238f, 3056.0f), 1.0f);
+        Panel panel2 = new Panel(new PointF(-33.637753f, 105.137695f),
+                new PointF(827.78784f, 105.137695f), new PointF(-33.637753f, 1234.5624f),
+                new PointF(827.78784f, 1234.5624f), 2.7058024f);
+        Panel panel3 = new Panel(new PointF(958.4959f, 65.02229f),
+                new PointF(1903.7208f, 65.02229f), new PointF(958.4959f, 1304.317f),
+                new PointF(1903.7208f, 1304.317f), 2.4659185f);
+        Panel panel4= new Panel(new PointF(132.2822f, 1219.6688f),
+                new PointF(773.26373f, 1219.6688f), new PointF(132.2822f, 2060.067f),
+                new PointF(773.26373f, 2060.067f), 3.6363726f);
+        Panel panel5 = new Panel(new PointF(832.7451f, 1246.4312f),
+                new PointF(1408.3948f, 1246.4312f), new PointF(832.7451f, 2001.1718f),
+                new PointF(1408.3948f, 2001.1718f), 4.049073f);
+        Panel panel6 = new Panel(new PointF(1368.4191f, 1246.4312f),
+                new PointF(1944.0687f, 1246.4312f), new PointF(1368.4191f, 2001.1718f),
+                new PointF(1944.0687f, 2001.1718f), 4.049073f);
+        Panel panel7 = new Panel(new PointF(622.6325f, 2014.0438f),
+                new PointF(1338.1141f, 2014.0438f), new PointF(622.6325f, 2952.1199f),
+                new PointF(1338.1141f, 2952.1199f), 3.2577322f);
+
+        mSavedPanels.add(panel2);
+        mSavedPanels.add(panel3);
+        mSavedPanels.add(panel4);
+        mSavedPanels.add(panel5);
+        mSavedPanels.add(panel6);
+        mSavedPanels.add(panel7);
+        mSavedPanels.add(panel1);
+
     }
 
     private void init() {
@@ -134,6 +170,13 @@ public class ComicActivity extends AppCompatActivity {
 
         mSavedPanels.add(panel);
 
+        Log.d("SavedPanel",
+                panel.getTopLeft() + " : " +
+                panel.getTopRight() + " : " +
+                panel.getBottomLeft() + " : " +
+                panel.getBottomRight() + " : " +
+                panel.getScale()
+            );
     }
 
     private void animateToPanel(Panel panel) {
