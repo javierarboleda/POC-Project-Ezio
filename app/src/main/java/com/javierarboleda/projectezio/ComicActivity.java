@@ -25,6 +25,7 @@ import java.util.ArrayList;
 public class ComicActivity extends AppCompatActivity {
 
     private SubsamplingScaleImageView mImageView;
+    private SubsamplingScaleImageView mHiddenImageView;
     private TextView mCoordTextView;
     private View mTopPanel;
     private View mBottomPanel;
@@ -265,81 +266,63 @@ public class ComicActivity extends AppCompatActivity {
 
         final float screenRatio = (float)mImageView.getWidth() / (float)mImageView.getHeight();
 
-        mImageView.animateScaleAndCenter(scale, midPointCoord)
-                .withDuration(1000)
+        mHiddenImageView.animateScaleAndCenter(scale, midPointCoord)
+                .withDuration(1)
                 .withEasing(SubsamplingScaleImageView.EASE_OUT_QUAD)
-                .withInterruptible(false).withOnAnimationEventListener(new SubsamplingScaleImageView.OnAnimationEventListener() {
-            @Override
-            public void onComplete() {
-                PointF midPointView = mImageView.sourceToViewCoord(midPointCoord);
-                Log.d("AnimateToPanel", "final mpv:" + midPointView);
+                .withInterruptible(false).withOnAnimationEventListener(
+                new SubsamplingScaleImageView.OnAnimationEventListener() {
+                    @Override
+                    public void onComplete() {
 
-                float leftPerc = panel.getLeftPane().x - panel.getTopLeft().x;
-                float rightPerc = panel.getTopRight().x - panel.getRightPane().x;
-                float topPerc = panel.getTopPane().y - panel.getTopRight().y;
-                float bottomPerc = panel.getBottomRight().y - panel.getBottomPane().y;
+                        float leftPerc = panel.getLeftPane().x - panel.getTopLeft().x;
+                        float rightPerc = panel.getTopRight().x - panel.getRightPane().x;
+                        float topPerc = panel.getTopPane().y - panel.getTopRight().y;
+                        float bottomPerc = panel.getBottomRight().y - panel.getBottomPane().y;
 
-//        int left = (int) (mImageView.getWidth() *
-//                ((panel.getLeftPane().x - panel.getTopLeft().x) * screenRatio));
+                        int left = (int) mHiddenImageView.sourceToViewCoord(
+                                panel.getLeftPane().x * mHiddenImageView.getSWidth(), 0).x;
+                        int right = mHiddenImageView.getWidth()
+                                - (int) mHiddenImageView.sourceToViewCoord(
+                                panel.getRightPane().x * mHiddenImageView.getSWidth(), 0).x;
+                        int top = (int) mHiddenImageView.sourceToViewCoord(
+                                0, panel.getTopPane().y * mHiddenImageView.getSHeight()).y;
+                        int bottom = mHiddenImageView.getHeight()
+                                - (int) mHiddenImageView.sourceToViewCoord(
+                                0, panel.getBottomPane().y * mHiddenImageView.getSHeight()).y;
 
-                int left = (int) mImageView.sourceToViewCoord(
-                        panel.getLeftPane().x * mImageView.getSWidth(), 0).x;
-                int right = mImageView.getWidth() - (int) mImageView.sourceToViewCoord(
-                        panel.getRightPane().x * mImageView.getSWidth(), 0).x;
-                int top = (int) mImageView.sourceToViewCoord(
-                        0, panel.getTopPane().y * mImageView.getSHeight()).y;
-                int bottom = mImageView.getHeight() - (int) mImageView.sourceToViewCoord(
-                        0, panel.getBottomPane().y * mImageView.getSHeight()).y;
+                        animateBorderPanels(left, right, top, bottom);
 
-                animateBorderPanels(left, right, top, bottom);
+                        mImageView.animateScaleAndCenter(scale, midPointCoord)
+                                .withDuration(500)
+                                .withEasing(SubsamplingScaleImageView.EASE_OUT_QUAD)
+                                .withInterruptible(false).start();
+                    }
 
-                Log.d("AnimateToPanel", "mpp:" + midPointPercentage + " mpc:" + midPointCoord + " scale:"
-                        + scale + " mpv:" + midPointView + " ratio:" + screenRatio);
+                    @Override
+                    public void onInterruptedByUser() {
 
-                Log.d("AnimateToPanel", "LP:" + leftPerc + " RP:" + rightPerc + " TP:" + topPerc +
-                        " BP:" + bottomPerc);
+                    }
 
-                Log.d("AnimateToPanel", "L:" + left + " R:" + right + " T:" + top + " B:" + bottom);
-            }
+                    @Override
+                    public void onInterruptedByNewAnim() {
 
-            @Override
-            public void onInterruptedByUser() {
-
-            }
-
-            @Override
-            public void onInterruptedByNewAnim() {
-
-            }
-        }).start();
+                    }
+                }).start();
 
 
-//        float leftPerc = panel.getLeftPane().x - panel.getTopLeft().x;
-//        float rightPerc = panel.getTopRight().x - panel.getRightPane().x;
-//        float topPerc = panel.getTopPane().y - panel.getTopRight().y;
-//        float bottomPerc = panel.getBottomRight().y - panel.getBottomPane().y;
-//
-////        int left = (int) (mImageView.getWidth() *
-////                ((panel.getLeftPane().x - panel.getTopLeft().x) * screenRatio));
-//
-//        int left = (int) mImageView.sourceToViewCoord(
-//                panel.getLeftPane().x * mImageView.getSWidth(), 0).x;
-//        int right = mImageView.getWidth() - (int) mImageView.sourceToViewCoord(
-//                panel.getRightPane().x * mImageView.getSWidth(), 0).x;
-//        int top = (int) mImageView.sourceToViewCoord(
-//                0, panel.getTopPane().y * mImageView.getSHeight()).y;
-//        int bottom = mImageView.getHeight() - (int) mImageView.sourceToViewCoord(
-//                0, panel.getBottomPane().y * mImageView.getSHeight()).y;
-//
-//        animateBorderPanels(left, right, top, bottom);
-//
-//        Log.d("AnimateToPanel", "mpp:" + midPointPercentage + " mpc:" + midPointCoord + " scale:"
-//                + scale + " mpv:" + midPointView + " ratio:" + screenRatio);
+
+//        Log.d("AnimateToPanel", "final mpv:" + midPointView);
+
+
+
+//        Log.d("AnimateToPanel", "mpp:" + midPointPercentage + " mpc:" + midPointCoord +
+//                " scale:" + scale + " mpv:" + midPointView + " ratio:" + screenRatio);
 //
 //        Log.d("AnimateToPanel", "LP:" + leftPerc + " RP:" + rightPerc + " TP:" + topPerc +
 //                " BP:" + bottomPerc);
 //
 //        Log.d("AnimateToPanel", "L:" + left + " R:" + right + " T:" + top + " B:" + bottom);
+
 
     }
 
@@ -403,6 +386,17 @@ public class ComicActivity extends AppCompatActivity {
 //        mImageView.setImage(ImageSource.resource(R.drawable.sample_image));
 
         mImageView.setPanLimit(SubsamplingScaleImageView.PAN_LIMIT_OUTSIDE);
+
+        mHiddenImageView =
+                (SubsamplingScaleImageView) findViewById(R.id.comicHiddenImageView);
+
+        mHiddenImageView.setImage(ImageSource.uri(
+                "/storage/emulated/0/comics/Batman Cacophony 01 (of 03) (2009) (3 covers)" +
+                        " (digital) (Minutemen-PhD)/Batman- Cacophony 001-023.jpg"));
+
+//        mHiddenImageView.setImage(ImageSource.resource(R.drawable.sample_image));
+
+        mHiddenImageView.setPanLimit(SubsamplingScaleImageView.PAN_LIMIT_OUTSIDE);
 
         mImageView.setOnImageEventListener(new SubsamplingScaleImageView.OnImageEventListener() {
             @Override
@@ -502,7 +496,7 @@ public class ComicActivity extends AppCompatActivity {
                 AnimationUtil.getLeftRightPanelValueAnimator(mRightPanel, right);
 
         AnimatorSet set = new AnimatorSet();
-        set.setDuration(1000);
+        set.setDuration(400);
         set.playTogether(va1, va2, va3, va4);
         set.start();
     }
