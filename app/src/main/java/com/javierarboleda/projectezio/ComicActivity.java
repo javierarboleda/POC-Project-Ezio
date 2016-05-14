@@ -91,34 +91,62 @@ public class ComicActivity extends AppCompatActivity {
 
     private void playTestPanels() {
 
-        Panel panel1 = new Panel(new PointF(-171.42374f, 0.0f), new PointF(2159.4238f, 0.0f),
-                new PointF(-171.42374f, 3056.0f), new PointF(2159.4238f, 3056.0f), 1.0f);
-        Panel panel2 = new Panel(new PointF(-33.637753f, 105.137695f),
-                new PointF(827.78784f, 105.137695f), new PointF(-33.637753f, 1234.5624f),
-                new PointF(827.78784f, 1234.5624f), 2.7058024f);
-        Panel panel3 = new Panel(new PointF(958.4959f, 65.02229f),
-                new PointF(1903.7208f, 65.02229f), new PointF(958.4959f, 1304.317f),
-                new PointF(1903.7208f, 1304.317f), 2.4659185f);
-        Panel panel4= new Panel(new PointF(132.2822f, 1219.6688f),
-                new PointF(773.26373f, 1219.6688f), new PointF(132.2822f, 2060.067f),
-                new PointF(773.26373f, 2060.067f), 3.6363726f);
-        Panel panel5 = new Panel(new PointF(832.7451f, 1246.4312f),
-                new PointF(1408.3948f, 1246.4312f), new PointF(832.7451f, 2001.1718f),
-                new PointF(1408.3948f, 2001.1718f), 4.049073f);
-        Panel panel6 = new Panel(new PointF(1368.4191f, 1246.4312f),
-                new PointF(1944.0687f, 1246.4312f), new PointF(1368.4191f, 2001.1718f),
-                new PointF(1944.0687f, 2001.1718f), 4.049073f);
-        Panel panel7 = new Panel(new PointF(622.6325f, 2014.0438f),
-                new PointF(1338.1141f, 2014.0438f), new PointF(622.6325f, 2952.1199f),
-                new PointF(1338.1141f, 2952.1199f), 3.2577322f);
+        float w = mImageView.getSWidth();
+        float h = mImageView.getSHeight();
 
-        mSavedPanels.add(panel2);
-        mSavedPanels.add(panel3);
-        mSavedPanels.add(panel4);
-        mSavedPanels.add(panel5);
-        mSavedPanels.add(panel6);
-        mSavedPanels.add(panel7);
+        Panel panel1 = new Panel(
+                new PointF(0.0427797f, 0.067912504f),
+                new PointF(0.35272756f, 0.067912504f),
+                new PointF(0.0427797f, 0.33226973f),
+                new PointF(0.35272756f, 0.33226973f),
+                new PointF(0.0427797f, 0f),
+                new PointF(0.35272756f, 0f),
+                new PointF(0f, 0.105251096f),
+                new PointF(0f, 0.29493114f),
+                3.7827604f);
+        Panel panel2 = new Panel(
+                new PointF(0.3935239f, 0.034182917f),
+                new PointF(0.8306046f, 0.034182917f),
+                new PointF(0.3935239f, 0.4069729f),
+                new PointF(0.8306046f, 0.4069729f),
+                new PointF(0.45422956f, 0f),
+                new PointF(0.769899f, 0f),
+                new PointF(0f, 0.034182917f),
+                new PointF(0f, 0.4069729f),
+                2.6824758f);
+
         mSavedPanels.add(panel1);
+        mSavedPanels.add(panel2);
+
+//        Panel panel1 = new Panel(new PointF(-0.08622924f, 0.0f), new PointF(1.0862293f, 0.0f),
+//                new PointF(-0.08622924f, 1.0f), new PointF(1.0862293f, 1.0f),
+//                new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), 1.0f);
+//        Panel panel2 = new Panel(new PointF(-0.016998665f, 0.03454772f),
+//                new PointF(0.42091873f, 0.03454772f), new PointF(-0.016998665f, 0.40805125f),
+//                new PointF(0.42091873f, 0.40805125f), new PointF(0.032647118f, 0f), new PointF(0.37127295f, 0f), new PointF(0f, 0.03651141f), new PointF(0f, 0.40608755f), 2.7058024f);
+//        Panel panel3 = new Panel(new PointF(0.46769738f, 0.019759871f),
+//                new PointF(0.9539177f, 0.019759871f), new PointF(0.46769738f, 0.4344614f),
+//                new PointF(0.9539177f, 0.4344614f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), 2.4659185f);
+//        Panel panel4= new Panel(new PointF(0.065099634f, 0.40284166f),
+//                new PointF(0.3839439f, 0.40284166f), new PointF(0.065099634f, 0.6747867f),
+//                new PointF(0.3839439f, 0.6747867f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), 3.6363726f);
+//        Panel panel5 = new Panel(new PointF(0.40621263f, 0.4091911f),
+//                new PointF(0.7017848f, 0.4091911f), new PointF(0.40621263f, 0.6612872f),
+//                new PointF(0.7017848f, 0.6612872f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), 4.049073f);
+//        Panel panel6 = new Panel(new PointF(0.6743034f, 0.4081206f),
+//                new PointF(0.9698756f, 0.4081206f), new PointF(0.6743034f, 0.6602167f),
+//                new PointF(0.9698756f, 0.6602167f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), 4.049073f);
+//        Panel panel7 = new Panel(new PointF(0.29906428f, 0.65833914f),
+//                new PointF(0.6652556f, 0.65833914f), new PointF(0.29906428f, 0.9706668f),
+//                new PointF(0.6652556f, 0.9706668f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), new PointF(0f, 0f), 3.2577322f);
+//
+//        mSavedPanels.add(panel2);
+//        mSavedPanels.add(panel3);
+//        mSavedPanels.add(panel4);
+//        mSavedPanels.add(panel5);
+//        mSavedPanels.add(panel6);
+//        mSavedPanels.add(panel7);
+//        mSavedPanels.add(panel1);
 
     }
 
@@ -143,18 +171,34 @@ public class ComicActivity extends AppCompatActivity {
         float x, y, scale;
 
         x = 0;
-        y = mTopPanel.getHeight();
+        y = 0;
         PointF topLeftSourcePointF = mImageView.viewToSourceCoord(x, y);
+        topLeftSourcePointF.x =
+                topLeftSourcePointF.x / (float)mImageView.getSWidth();
+        topLeftSourcePointF.y =
+                topLeftSourcePointF.y / (float)mImageView.getSHeight();
 
         x = mImageView.getWidth();
         PointF topRightSourcePointF = mImageView.viewToSourceCoord(x, y);
+        topRightSourcePointF.x =
+                topRightSourcePointF.x / (float)mImageView.getSWidth();
+        topRightSourcePointF.y =
+                topRightSourcePointF.y / (float)mImageView.getSHeight();
 
         x = 0;
-        y = mImageView.getHeight() - mBottomPanel.getHeight();
+        y = mImageView.getHeight();
         PointF bottomLeftSourcePointF = mImageView.viewToSourceCoord(x, y);
+        bottomLeftSourcePointF.x =
+                bottomLeftSourcePointF.x / (float)mImageView.getSWidth();
+        bottomLeftSourcePointF.y =
+                bottomLeftSourcePointF.y / (float)mImageView.getSHeight();
 
         x = mImageView.getWidth();
         PointF bottomRightSourcePointF = mImageView.viewToSourceCoord(x, y);
+        bottomRightSourcePointF.x =
+                bottomRightSourcePointF.x / (float)mImageView.getSWidth();
+        bottomRightSourcePointF.y =
+                bottomRightSourcePointF.y / (float)mImageView.getSHeight();
 
         scale = mImageView.getScale() / mOriginalScale;
 
@@ -165,39 +209,138 @@ public class ComicActivity extends AppCompatActivity {
 
         mCoordTextView.setText(debugText);
 
+        // get left panel x, and the percentage x point on image
+        x = mLeftPanel.getWidth();
+        PointF leftPanePointF = mImageView.viewToSourceCoord(x, 0);
+        leftPanePointF.x =
+                leftPanePointF.x / (float) mImageView.getSWidth();
+
+        // get right panel x, and the percentage x point on image
+        x = mImageView.getWidth() - mRightPanel.getWidth();
+        PointF rightPanePointF = mImageView.viewToSourceCoord(x, 0);
+        rightPanePointF.x =
+                rightPanePointF.x / (float) mImageView.getSWidth();
+
+        // get right panel x, and the percentage x point on image
+        y = mTopPanel.getHeight();
+        PointF topPanePointF = mImageView.viewToSourceCoord(0, y);
+        topPanePointF.y =
+                topPanePointF.y / (float) mImageView.getSHeight();
+
+        // get right panel x, and the percentage x point on image
+        y = mImageView.getHeight() - mBottomPanel.getHeight();
+        PointF bottomPanePointF = mImageView.viewToSourceCoord(0, y);
+        bottomPanePointF.y =
+                bottomPanePointF.y / (float) mImageView.getSHeight();
+
         Panel panel = new Panel(topLeftSourcePointF, topRightSourcePointF,
-                bottomLeftSourcePointF, bottomRightSourcePointF, scale);
+                bottomLeftSourcePointF, bottomRightSourcePointF, leftPanePointF, rightPanePointF,
+                topPanePointF, bottomPanePointF, scale);
 
         mSavedPanels.add(panel);
 
-        Log.d("SavedPanel",
+        Log.d("SavedPanelImage",
                 panel.getTopLeft() + " : " +
                 panel.getTopRight() + " : " +
                 panel.getBottomLeft() + " : " +
                 panel.getBottomRight() + " : " +
                 panel.getScale()
             );
+        Log.d("SavedPanelBorders",
+                panel.getLeftPane().x + " : " +
+                panel.getRightPane().x + " : " +
+                panel.getTopPane().y + " : " +
+                panel.getBottomPane().y
+            );
     }
 
-    private void animateToPanel(Panel panel) {
+    private void animateToPanel(final Panel panel) {
 
-        PointF midPoint = panel.getMidpoint();
-        float scale = panel.getScale() * mOriginalScale;
+        final PointF midPointPercentage = panel.getMidpoint();
+        final PointF midPointCoord = new PointF(midPointPercentage.x * mImageView.getSWidth(),
+                midPointPercentage.y * mImageView.getSHeight());
+        final float scale = panel.getScale() * mOriginalScale;
 
-        mImageView.animateScaleAndCenter(scale, midPoint)
+        PointF midPointView = mImageView.sourceToViewCoord(midPointCoord);
+
+        final float screenRatio = (float)mImageView.getWidth() / (float)mImageView.getHeight();
+
+        mImageView.animateScaleAndCenter(scale, midPointCoord)
                 .withDuration(1000)
                 .withEasing(SubsamplingScaleImageView.EASE_OUT_QUAD)
-                .withInterruptible(false)
-                .start();
+                .withInterruptible(false).withOnAnimationEventListener(new SubsamplingScaleImageView.OnAnimationEventListener() {
+            @Override
+            public void onComplete() {
+                PointF midPointView = mImageView.sourceToViewCoord(midPointCoord);
+                Log.d("AnimateToPanel", "final mpv:" + midPointView);
 
-    }
+                float leftPerc = panel.getLeftPane().x - panel.getTopLeft().x;
+                float rightPerc = panel.getTopRight().x - panel.getRightPane().x;
+                float topPerc = panel.getTopPane().y - panel.getTopRight().y;
+                float bottomPerc = panel.getBottomRight().y - panel.getBottomPane().y;
 
-    private PointF getMidpoint(PointF a, PointF b) {
+//        int left = (int) (mImageView.getWidth() *
+//                ((panel.getLeftPane().x - panel.getTopLeft().x) * screenRatio));
 
-        float x = (a.x + b.x) / 2;
-        float y = (a.y + b.y) / 2;
+                int left = (int) mImageView.sourceToViewCoord(
+                        panel.getLeftPane().x * mImageView.getSWidth(), 0).x;
+                int right = mImageView.getWidth() - (int) mImageView.sourceToViewCoord(
+                        panel.getRightPane().x * mImageView.getSWidth(), 0).x;
+                int top = (int) mImageView.sourceToViewCoord(
+                        0, panel.getTopPane().y * mImageView.getSHeight()).y;
+                int bottom = mImageView.getHeight() - (int) mImageView.sourceToViewCoord(
+                        0, panel.getBottomPane().y * mImageView.getSHeight()).y;
 
-        return new PointF(x, y);
+                animateBorderPanels(left, right, top, bottom);
+
+                Log.d("AnimateToPanel", "mpp:" + midPointPercentage + " mpc:" + midPointCoord + " scale:"
+                        + scale + " mpv:" + midPointView + " ratio:" + screenRatio);
+
+                Log.d("AnimateToPanel", "LP:" + leftPerc + " RP:" + rightPerc + " TP:" + topPerc +
+                        " BP:" + bottomPerc);
+
+                Log.d("AnimateToPanel", "L:" + left + " R:" + right + " T:" + top + " B:" + bottom);
+            }
+
+            @Override
+            public void onInterruptedByUser() {
+
+            }
+
+            @Override
+            public void onInterruptedByNewAnim() {
+
+            }
+        }).start();
+
+
+//        float leftPerc = panel.getLeftPane().x - panel.getTopLeft().x;
+//        float rightPerc = panel.getTopRight().x - panel.getRightPane().x;
+//        float topPerc = panel.getTopPane().y - panel.getTopRight().y;
+//        float bottomPerc = panel.getBottomRight().y - panel.getBottomPane().y;
+//
+////        int left = (int) (mImageView.getWidth() *
+////                ((panel.getLeftPane().x - panel.getTopLeft().x) * screenRatio));
+//
+//        int left = (int) mImageView.sourceToViewCoord(
+//                panel.getLeftPane().x * mImageView.getSWidth(), 0).x;
+//        int right = mImageView.getWidth() - (int) mImageView.sourceToViewCoord(
+//                panel.getRightPane().x * mImageView.getSWidth(), 0).x;
+//        int top = (int) mImageView.sourceToViewCoord(
+//                0, panel.getTopPane().y * mImageView.getSHeight()).y;
+//        int bottom = mImageView.getHeight() - (int) mImageView.sourceToViewCoord(
+//                0, panel.getBottomPane().y * mImageView.getSHeight()).y;
+//
+//        animateBorderPanels(left, right, top, bottom);
+//
+//        Log.d("AnimateToPanel", "mpp:" + midPointPercentage + " mpc:" + midPointCoord + " scale:"
+//                + scale + " mpv:" + midPointView + " ratio:" + screenRatio);
+//
+//        Log.d("AnimateToPanel", "LP:" + leftPerc + " RP:" + rightPerc + " TP:" + topPerc +
+//                " BP:" + bottomPerc);
+//
+//        Log.d("AnimateToPanel", "L:" + left + " R:" + right + " T:" + top + " B:" + bottom);
+
     }
 
     private void updatePanelSize(int posOrNeg) {
@@ -256,6 +399,8 @@ public class ComicActivity extends AppCompatActivity {
         mImageView.setImage(ImageSource.uri(
                 "/storage/emulated/0/comics/Batman Cacophony 01 (of 03) (2009) (3 covers)" +
                         " (digital) (Minutemen-PhD)/Batman- Cacophony 001-023.jpg"));
+
+//        mImageView.setImage(ImageSource.resource(R.drawable.sample_image));
 
         mImageView.setPanLimit(SubsamplingScaleImageView.PAN_LIMIT_OUTSIDE);
 
@@ -320,7 +465,7 @@ public class ComicActivity extends AppCompatActivity {
                         .withInterruptible(false)
                         .start();
 
-                animateBorderPanels();
+                animateBorderPanels(0, 0, 200, 200);
 
             }
 
@@ -343,18 +488,18 @@ public class ComicActivity extends AppCompatActivity {
 
     }
 
-    private void animateBorderPanels() {
+    private void animateBorderPanels(int left, int right, int top, int bottom) {
         ValueAnimator va1 =
-                AnimationUtil.getTopBottomPanelValueAnimator(mTopPanel, 200);
+                AnimationUtil.getTopBottomPanelValueAnimator(mTopPanel, top);
 
         ValueAnimator va2 =
-                AnimationUtil.getTopBottomPanelValueAnimator(mBottomPanel, 200);
+                AnimationUtil.getTopBottomPanelValueAnimator(mBottomPanel, bottom);
 
         ValueAnimator va3 =
-                AnimationUtil.getLeftRightPanelValueAnimator(mLeftPanel, 20);
+                AnimationUtil.getLeftRightPanelValueAnimator(mLeftPanel, left);
 
         ValueAnimator va4 =
-                AnimationUtil.getLeftRightPanelValueAnimator(mRightPanel, 20);
+                AnimationUtil.getLeftRightPanelValueAnimator(mRightPanel, right);
 
         AnimatorSet set = new AnimatorSet();
         set.setDuration(1000);

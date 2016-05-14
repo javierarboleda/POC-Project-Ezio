@@ -11,15 +11,24 @@ public class Panel {
     private PointF mTopRight;
     private PointF mBottomLeft;
     private PointF mBottomRight;
+    private PointF mLeftPane;
+    private PointF mRightPane;
+    private PointF mTopPane;
+    private PointF mBottomPane;
     private float mScale;
 
     public Panel(PointF topLeft, PointF topRight, PointF bottomLeft, PointF bottomRight,
+                 PointF leftPane, PointF rightPane, PointF topPane, PointF bottomPane,
                  float scale) {
 
         this.mTopLeft = topLeft;
         this.mTopRight = topRight;
         this.mBottomLeft = bottomLeft;
         this.mBottomRight = bottomRight;
+        this.mLeftPane = leftPane;
+        this.mRightPane = rightPane;
+        this.mTopPane = topPane;
+        this.mBottomPane = bottomPane;
         this.mScale = scale;
 
     }
@@ -61,6 +70,38 @@ public class Panel {
         float y = (mTopLeft.y + mBottomRight.y) / 2;
 
         return new PointF(x, y);
+    }
+
+    public PointF getLeftPane() {
+        return mLeftPane;
+    }
+
+    public void setLeftPane(PointF mLeftPane) {
+        this.mLeftPane = mLeftPane;
+    }
+
+    public PointF getRightPane() {
+        return mRightPane;
+    }
+
+    public void setRightPane(PointF mRightPane) {
+        this.mRightPane = mRightPane;
+    }
+
+    public PointF getTopPane() {
+        return mTopPane;
+    }
+
+    public void setTopPane(PointF mTopPane) {
+        this.mTopPane = mTopPane;
+    }
+
+    public PointF getBottomPane() {
+        return mBottomPane;
+    }
+
+    public void setBottomPane(PointF mBottomPane) {
+        this.mBottomPane = mBottomPane;
     }
 
     public float getScale() {
