@@ -96,28 +96,96 @@ public class ComicActivity extends AppCompatActivity {
         float h = mImageView.getSHeight();
 
         Panel panel1 = new Panel(
-                new PointF(0.0427797f, 0.067912504f),
-                new PointF(0.35272756f, 0.067912504f),
-                new PointF(0.0427797f, 0.33226973f),
-                new PointF(0.35272756f, 0.33226973f),
-                new PointF(0.0427797f, 0f),
-                new PointF(0.35272756f, 0f),
-                new PointF(0f, 0.105251096f),
-                new PointF(0f, 0.29493114f),
-                3.7827604f);
+                new PointF(-0.08622924f, 0.0f),
+                new PointF(1.0862293f, 0.0f),
+                new PointF(-0.08622924f, 1.0f),
+                new PointF(1.0862293f, 1.0f),
+                new PointF(-0.08622924f, 0f),
+                new PointF(1.0862293f, 0f),
+                new PointF(0f, 0.0f),
+                new PointF(0f, 1.0f),
+                1.0f);
         Panel panel2 = new Panel(
-                new PointF(0.3935239f, 0.034182917f),
-                new PointF(0.8306046f, 0.034182917f),
-                new PointF(0.3935239f, 0.4069729f),
-                new PointF(0.8306046f, 0.4069729f),
-                new PointF(0.45422956f, 0f),
-                new PointF(0.769899f, 0f),
-                new PointF(0f, 0.034182917f),
-                new PointF(0f, 0.4069729f),
-                2.6824758f);
+                new PointF(-0.0123168975f, 0.042621214f),
+                new PointF(0.40727508f, 0.042621214f),
+                new PointF(-0.0123168975f, 0.40049484f),
+                new PointF(0.40727508f, 0.40049484f),
+                new PointF(0.026534213f, 0f),
+                new PointF(0.368424f, 0f),
+                new PointF(0f, 0.042621214f),
+                new PointF(0f, 0.40049484f),
+                2.7942824f);
+        Panel panel3 = new Panel(
+                new PointF(0.3773621f, -0.031055724f),
+                new PointF(0.978787f, -0.031055724f),
+                new PointF(0.3773621f, 0.4819048f),
+                new PointF(0.978787f, 0.4819048f),
+                new PointF(0.3773621f, 0f),
+                new PointF(0.978787f, 0f),
+                new PointF(0f, 0.041396327f),
+                new PointF(0f, 0.40945274f),
+                1.9494678f);
+        Panel panel4 = new Panel(
+                new PointF(0.030202089f, 0.36460716f),
+                new PointF(0.417549f, 0.36460716f),
+                new PointF(0.030202089f, 0.6949787f),
+                new PointF(0.417549f, 0.6949787f),
+                new PointF(0.030202089f, 0f),
+                new PointF(0.417549f, 0f),
+                new PointF(0f, 0.4112698f),
+                new PointF(0f, 0.6483161f),
+                3.0268953f);
+        Panel panel5 = new Panel(
+                new PointF(0.41803882f, 0.41252545f),
+                new PointF(0.6902034f, 0.41252545f),
+                new PointF(0.41803882f, 0.644657f),
+                new PointF(0.6902034f, 0.644657f),
+                new PointF(0.43063903f, 0f),
+                new PointF(0.67760324f, 0f),
+                new PointF(0f, 0.41252545f),
+                new PointF(0f, 0.644657f),
+                4.3079023f);
+        Panel panel6 = new Panel(
+                new PointF(0.6952774f, 0.41329533f),
+                new PointF(0.967442f, 0.41329533f),
+                new PointF(0.6952774f, 0.64542687f),
+                new PointF(0.967442f, 0.64542687f),
+                new PointF(0.70787764f, 0f),
+                new PointF(0.9548418f, 0f),
+                new PointF(0f, 0.41329533f),
+                new PointF(0f, 0.64542687f),
+                4.3079023f);
+        Panel panel7 = new Panel(
+                new PointF(0.28722337f, 0.5885466f),
+                new PointF(0.6297147f, 0.5885466f),
+                new PointF(0.28722337f, 0.8806605f),
+                new PointF(0.6297147f, 0.8806605f),
+                new PointF(0.28722337f, 0f),
+                new PointF(0.6297147f, 0f),
+                new PointF(0f, 0.66074985f),
+                new PointF(0f, 0.80845714f),
+                3.423323f);
+        Panel panel8 = new Panel(
+                new PointF(0.019454448f, 0.40821865f),
+                new PointF(0.96278983f, 0.40821865f),
+                new PointF(0.019454448f, 1.2127976f),
+                new PointF(0.96278983f, 1.2127976f),
+                new PointF(0.019454448f, 0f),
+                new PointF(0.96278983f, 0f),
+                new PointF(0f, 0.6639111f),
+                new PointF(0f, 0.95710516f),
+                1.2428862f);
+
+
 
         mSavedPanels.add(panel1);
         mSavedPanels.add(panel2);
+        mSavedPanels.add(panel3);
+        mSavedPanels.add(panel4);
+        mSavedPanels.add(panel5);
+        mSavedPanels.add(panel6);
+        mSavedPanels.add(panel7);
+        mSavedPanels.add(panel8);
 
 //        Panel panel1 = new Panel(new PointF(-0.08622924f, 0.0f), new PointF(1.0862293f, 0.0f),
 //                new PointF(-0.08622924f, 1.0f), new PointF(1.0862293f, 1.0f),
